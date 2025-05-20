@@ -1,16 +1,10 @@
 import requests
 
-methods = ["POST","GET","PUT","DELETE","Wrong method",""]
-api_url = "https://playground.learnqa.ru/api/compare_query_type"
+methods = ["POST","GET","PUT","DELETE"]
+api_url = "https://playground.learnqa.ru/api/check_type"
+
 
 for method in methods:
-    get_response = requests.get(
-        api_url,
-        params={'method': f"{method}"})
-    print(f"GET request with parameter 'method' : {method}")
-    print(f"Response code: {get_response.status_code}")
-    print(f"Response text: {get_response.text}")
-    print("-----------------")
 
     post_response = requests.post(
         api_url,
@@ -18,7 +12,15 @@ for method in methods:
     print(f"POST request with parameter 'method' : {method}")
     print(f"Response code: {post_response.status_code}")
     print(f"Response text: {post_response.text}")
-    print("-----------------")
+
+
+    get_response = requests.get(
+        api_url,
+        params={'method': f"{method}"})
+    print(f"GET request with parameter 'method' : {method}")
+    print(f"Response code: {get_response.status_code}")
+    print(f"Response text: {get_response.text}")
+
 
     put_response = requests.put(
         api_url,
@@ -26,7 +28,6 @@ for method in methods:
     print(f"PUT request with parameter 'method' : {method}")
     print(f"Response code: {put_response.status_code}")
     print(f"Response text: {put_response.text}")
-    print("-----------------")
 
 
     delete_response = requests.delete(
@@ -35,4 +36,4 @@ for method in methods:
     print(f"DELETE request with parameter 'method' : {method}")
     print(f"Response code: {delete_response.status_code}")
     print(f"Response text: {delete_response.text}")
-    print("-----------------")
+
